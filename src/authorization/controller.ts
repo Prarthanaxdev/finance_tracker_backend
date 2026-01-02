@@ -10,19 +10,19 @@ const generateToken = (userId: string): string => {
 };
 
 // @desc    Register a new user
-// @route   POST /api/auth/register
+// @route   POST /api/signup
 // @access  Public (anyone can register)
-export const registerUser = async (
+export const SignupUser = async (
   req: Request<{}, ApiResponse, RegisterBody>,
   res: Response<ApiResponse>,
 ): Promise<void> => {
   try {
-    const { name, email, password } = req.body;
+    const { email, password } = req.body;
 
-    if (!name || !email || !password) {
+    if (!email || !password) {
       res.status(400).json({
         success: false,
-        message: 'Please provide name, email, and password',
+        message: 'Please provide email and password',
       });
       return;
     }
@@ -47,7 +47,6 @@ export const registerUser = async (
     }
 
     const user = await User.create({
-      name,
       email,
       password,
     });
@@ -78,9 +77,9 @@ export const registerUser = async (
 };
 
 // @desc    Login user
-// @route   POST /api/auth/login
+// @route   POST /api/signin
 // @access  Public
-export const loginUser = async (
+export const SigninUser = async (
   req: Request<{}, ApiResponse, LoginBody>,
   res: Response<ApiResponse>,
 ): Promise<void> => {

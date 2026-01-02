@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from './authorization/routes';
+import categoryRoutes from './category/routes';
 import connectDB from './config/db';
 
 dotenv.config();
@@ -9,7 +10,12 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN ?? 'http://localhost:3000',
+  credentials: true,
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -20,6 +26,7 @@ app.get('/', (_req: Request, res: Response) => {
 
 // Routes
 app.use('/api/', authRoutes);
+app.use('/api/categories', categoryRoutes);
 
 // Start server (connect to DB first)
 const startServer = async (): Promise<void> => {
