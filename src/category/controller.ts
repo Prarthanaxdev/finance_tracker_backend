@@ -1,6 +1,6 @@
 import { Response } from 'express';
-import CategoryModel from '../models/Category';
-import { AuthRequest } from '../types';
+import CategoryModel from './category.model';
+import { AuthRequest } from '../auth/auth.types';
 
 export const AddCategory = async (req: AuthRequest, res: Response): Promise<void> => {
   try {

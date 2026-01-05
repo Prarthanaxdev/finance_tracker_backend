@@ -1,5 +1,5 @@
 import express, { Router } from 'express';
-import { authMiddleware } from '../authMiddleware';
+import { authMiddleware } from '../middlewares/authMiddleware';
 import { AddCategory, GetCategories } from './controller';
 
 const router: Router = express.Router();

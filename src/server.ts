@@ -1,8 +1,10 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import authRoutes from './authorization/routes';
+import authRoutes from './auth/routes';
 import categoryRoutes from './category/routes';
+import transactionRoutes from './transaction/routes';
+import dashboardRoutes from './dashboard/routes';
 import connectDB from './config/db';
 
 dotenv.config();
@@ -27,6 +29,8 @@ app.get('/', (_req: Request, res: Response) => {
 // Routes
 app.use('/api/', authRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/transactions', transactionRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 // Start server (connect to DB first)
 const startServer = async (): Promise<void> => {

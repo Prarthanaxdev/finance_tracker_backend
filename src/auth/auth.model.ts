@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
-import { IUser } from '../types';
+import { IUser } from './auth.types';
 
 // User Schema - defines the structure of user documents in MongoDB
 const userSchema = new Schema<IUser>(

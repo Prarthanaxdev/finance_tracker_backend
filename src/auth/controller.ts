@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
-import User from '../models/User';
+import User from './auth.model';
 import jwt from 'jsonwebtoken';
-import { RegisterBody, LoginBody, ApiResponse, JWTPayload } from '../types';
+import { RegisterBody, LoginBody, ApiResponse, JWTPayload } from './auth.types';
 
 const generateToken = (userId: string): string => {
   return jwt.sign({ id: userId } as JWTPayload, process.env.JWT_SECRET as string, {

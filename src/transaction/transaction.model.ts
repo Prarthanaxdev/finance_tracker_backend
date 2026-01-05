@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
-import { ICategory } from '../types/category.types';
+import { ITransaction } from './transcation.types';
 
-const CategorySchema = new Schema<ICategory>(
+const TransactionSchema = new Schema<ITransaction>(
   {
     userId: {
       type: Schema.Types.ObjectId,
@@ -9,15 +9,20 @@ const CategorySchema = new Schema<ICategory>(
       required: true,
       index: true,
     },
-    name: {
-      type: String,
+    amount: {
+      type: Number,
       required: true,
-      trim: true,
     },
     type: {
       type: String,
       enum: ['income', 'expense'],
       required: true,
+    },
+    categoryId: {
+      type: Schema.Types.ObjectId,
+      ref: 'Category',
+      required: true,
+      index: true,
     },
     description: {
       type: String,
@@ -33,8 +38,5 @@ const CategorySchema = new Schema<ICategory>(
   },
 );
 
-/* Prevent duplicate category names per user */
-CategorySchema.index({ userId: 1, name: 1 }, { unique: true });
-
-const CategoryModel = mongoose.model<ICategory>('Category', CategorySchema);
-export default CategoryModel;
+const TransactionModel = mongoose.model<ITransaction>('Transaction', TransactionSchema);
+export default TransactionModel;
