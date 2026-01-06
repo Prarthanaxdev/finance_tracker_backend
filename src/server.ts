@@ -1,19 +1,23 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 import dotenv from 'dotenv';
 import authRoutes from './auth/routes';
 import categoryRoutes from './category/routes';
 import transactionRoutes from './transaction/routes';
 import dashboardRoutes from './dashboard/routes';
 import connectDB from './config/db';
+import config from './config/keys';
 
 dotenv.config();
 
 const app = express();
 
 // Middleware
+app.use(helmet()); // Security headers
 const corsOptions = {
-  origin: process.env.CORS_ORIGIN ?? 'http://localhost:3000',
+  origin: config.CORS_ORIGIN,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -36,7 +40,7 @@ app.use('/api/dashboard', dashboardRoutes);
 const startServer = async (): Promise<void> => {
   try {
     await connectDB();
-    const PORT = process.env.PORT || 5000;
+    const PORT = config.PORT;
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
