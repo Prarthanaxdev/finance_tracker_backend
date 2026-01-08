@@ -1,0 +1,7 @@
+{
+  "entryPoints": ["src"],
+  "out": "docs",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "includeVersion": true
+}
