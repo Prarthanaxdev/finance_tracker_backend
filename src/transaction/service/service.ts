@@ -59,7 +59,7 @@ export const deleteTransaction = async (transactionId: string, userId: string) =
 };
 
 export const updateTransaction = async (transactionId: string, userId: string, updateData: any) => {
-  if (updateData.amount && updateData.amount <= 0) {
+  if (updateData.amount !== undefined && updateData.amount <= 0) {
     throw new ValidationError('Amount must be greater than zero');
   }
 

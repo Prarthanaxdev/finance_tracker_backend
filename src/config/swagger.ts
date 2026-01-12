@@ -22,6 +22,7 @@ const options: swaggerJsdoc.Options = {
     components: {
       securitySchemes: {
         bearerAuth: {
+          // JWT authentication scheme
           type: 'http',
           scheme: 'bearer',
           bearerFormat: 'JWT',
@@ -30,7 +31,7 @@ const options: swaggerJsdoc.Options = {
     },
     security: [
       {
-        bearerAuth: [],
+        bearerAuth: [], // Apply bearerAuth globally i.e all endpoints require JWT authentication
       },
     ],
   },

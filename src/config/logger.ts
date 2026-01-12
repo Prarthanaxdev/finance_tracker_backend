@@ -9,8 +9,8 @@ export const logger = winston.createLogger({
   ),
   transports: [
     new winston.transports.Console(),
-    new winston.transports.File({ filename: 'logs/error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'logs/combined.log' }),
+    new winston.transports.File({ filename: 'logs/error.log', level: 'error' }), // logs only errors
+    new winston.transports.File({ filename: 'logs/combined.log' }), // logs all levels (info, warn, error)
   ],
 });
 
