@@ -1,13 +1,13 @@
 import express, { Router } from 'express';
-import { authMiddleware } from '../../middleware/authMiddleware';
+import { authMiddleware } from '@middleware/authMiddleware';
 import {
   AddTransaction,
   GetTransactions,
-  UpdateTransaction,
   DeleteTransaction,
+  UpdateTransaction,
 } from '../controller/controller';
-import { validateRequest } from '../../validations/validator';
-import { CreateTransactionSchema, UpdateTransactionSchema } from '../../validations/schema';
+import { validateRequest } from '@validations/validator';
+import { CreateTransactionSchema, UpdateTransactionSchema } from '@validations/schema';
 
 const router: Router = express.Router();
 

@@ -12,8 +12,21 @@ import { errorHandler } from './middleware/errorHandler';
 import morganMiddleware from './middleware/morganMiddleware';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './config/swagger';
+import path from 'path';
+import fs from 'fs';
 
 dotenv.config();
+
+// Load Swagger spec: from JSDoc in dev, from static JSON in production
+const getSwaggerSpec = () => {
+  if (process.env.NODE_ENV === 'production') {
+    const swaggerPath = path.join(__dirname, 'swagger.json');
+    if (fs.existsSync(swaggerPath)) {
+      return JSON.parse(fs.readFileSync(swaggerPath, 'utf-8'));
+    }
+  }
+  return swaggerSpec;
+};
 
 const app = express();
 
@@ -32,7 +45,7 @@ app.use(morganMiddleware);
 
 // Swagger documentation route
 app.use('/api-docs', ...(swaggerUi.serve as any));
-app.get('/api-docs', swaggerUi.setup(swaggerSpec) as any);
+app.get('/api-docs', swaggerUi.setup(getSwaggerSpec()) as any);
 
 // Basic route to test server
 app.get('/', (_req: Request, res: Response) => {

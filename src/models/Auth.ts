@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 import bcrypt from 'bcryptjs';
-import { IUser } from '../types';
+import { IUser } from '@auth/types';
 
 // User Schema - defines the structure of user documents in MongoDB
 const userSchema = new Schema<IUser>(
@@ -12,6 +12,7 @@ const userSchema = new Schema<IUser>(
       lowercase: true, // Converts email to lowercase
       trim: true,
       match: [/^\S+@\S+\.\S+$/, 'Please provide a valid email'], // Email validation
+      index: true, // Index for fast email lookups (findByEmail queries)
     },
     password: {
       type: String,

@@ -6,12 +6,12 @@
  * pipelines to generate financial insights from transaction data.
  */
 
-import { getMonthlySummary, getMonthlyTrends, getCategoryBreakdown } from '../service/service';
-import TransactionModel from '../../transaction/model/model';
-import { ValidationError } from '../../utils/errors';
+import { getMonthlySummary, getMonthlyTrends, getCategoryBreakdown } from '@services/index';
+import { Transaction as TransactionModel } from '@models/index';
+import { ValidationError } from '@utils/errors';
 
-// Mock the Transaction model to prevent actual database calls during testing
-jest.mock('../../transaction/model/model');
+// Mock the models
+jest.mock('@models/index');
 
 describe('Dashboard Service', () => {
   // Test user ID used across all test cases

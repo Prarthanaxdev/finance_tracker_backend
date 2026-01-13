@@ -1,6 +1,8 @@
 import { Response, NextFunction } from 'express';
-import { AuthRequest } from '../../auth/types';
-import * as TransactionService from '../service/service';
+import { AuthRequest } from '@auth/types';
+import { TransactionApplicationService } from '@services/application/TransactionApplicationService';
+
+const transactionAppService = new TransactionApplicationService();
 
 export const AddTransaction = async (
   req: AuthRequest,
@@ -19,7 +21,7 @@ export const AddTransaction = async (
       return;
     }
 
-    const newTransaction = await TransactionService.createTransaction({
+    const newTransaction = await transactionAppService.createTransaction({
       userId: req.user._id,
       amount,
       type,
@@ -54,7 +56,7 @@ export const GetTransactions = async (
         ? (req.query.type as 'income' | 'expense')
         : undefined;
 
-    const transactions = await TransactionService.getUserTransactions(
+    const transactions = await transactionAppService.getUserTransactions(
       req.user._id,
       limit,
       offset,
@@ -82,7 +84,7 @@ export const DeleteTransaction = async (
     }
 
     const { id } = req.params;
-    const transaction = await TransactionService.deleteTransaction(id, req.user._id);
+    const transaction = await transactionAppService.deleteTransaction(id, req.user._id);
 
     res.status(200).json({
       message: 'Transaction deleted successfully',
@@ -107,7 +109,7 @@ export const UpdateTransaction = async (
     const { id } = req.params;
     const { amount, type, categoryId, date, description } = req.body;
 
-    const updatedTransaction = await TransactionService.updateTransaction(id, req.user._id, {
+    const updatedTransaction = await transactionAppService.updateTransaction(id, req.user._id, {
       amount,
       type,
       categoryId,

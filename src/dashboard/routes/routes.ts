@@ -1,5 +1,5 @@
 import express, { Router } from 'express';
-import { authMiddleware } from '../../middleware/authMiddleware';
+import { authMiddleware } from '@middleware/authMiddleware';
 import { GetSummary, GetMonthlyTrends, CategoryBreakdown } from '../controller/controller';
 const router: Router = express.Router();
 

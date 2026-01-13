@@ -1,6 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { RegisterBody, LoginBody, ApiResponse } from '../types';
-import * as AuthService from '../service/service';
+import { RegisterBody, LoginBody, ApiResponse } from '@auth/types';
+import { AuthApplicationService } from '@services/application/AuthApplicationService';
+
+const authAppService = new AuthApplicationService();
 
 /**
  * Register a new user
@@ -17,7 +19,7 @@ export const SignupUser = async (
   try {
     const { email, password } = req.body;
 
-    const userData = await AuthService.registerUser(email, password);
+    const userData = await authAppService.registerUser(email, password);
 
     res.status(201).json({
       success: true,
@@ -43,7 +45,7 @@ export const SigninUser = async (
   try {
     const { email, password } = req.body;
 
-    const userData = await AuthService.loginUser(email, password);
+    const userData = await authAppService.loginUser(email, password);
 
     res.json({
       success: true,

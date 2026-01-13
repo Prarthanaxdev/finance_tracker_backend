@@ -1,6 +1,8 @@
 import { Response, NextFunction } from 'express';
-import { AuthRequest } from '../../auth/types';
-import * as CategoryService from '../service/service';
+import { AuthRequest } from '@auth/types';
+import { CategoryApplicationService } from '@services/application/CategoryApplicationService';
+
+const categoryAppService = new CategoryApplicationService();
 
 /**
  * Add a new category for the authenticated user
@@ -22,7 +24,12 @@ export const AddCategory = async (
 
     const { name, type, description } = req.body;
 
-    const newCategory = await CategoryService.createCategory(req.user._id, name, type, description);
+    const newCategory = await categoryAppService.createCategory(
+      req.user._id,
+      name,
+      type,
+      description,
+    );
 
     res.status(201).json({
       success: true,
@@ -54,7 +61,7 @@ export const GetCategories = async (
 
     const limit = parseInt(req.query.limit as string) || 10;
     const offset = parseInt(req.query.offset as string) || 0;
-    const categories = await CategoryService.getUserCategories(req.user._id, limit, offset);
+    const categories = await categoryAppService.getUserCategories(req.user._id, limit, offset);
 
     res.status(200).json({
       success: true,
@@ -87,7 +94,7 @@ export const UpdateCategory = async (
     const { id } = req.params;
     const { name, type, description } = req.body;
 
-    const updatedCategory = await CategoryService.updateCategory(id, req.user._id, {
+    const updatedCategory = await categoryAppService.updateCategory(id, req.user._id, {
       name,
       type,
       description,

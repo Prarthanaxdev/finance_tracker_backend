@@ -10,12 +10,12 @@ import {
   getUserTransactions,
   updateTransaction,
   deleteTransaction,
-} from '../service/service';
-import TransactionModel from '../model/model';
-import { ValidationError, NotFoundError } from '../../utils/errors';
+} from '@services/index';
+import { Transaction as TransactionModel } from '@models/index';
+import { ValidationError, NotFoundError } from '@utils/errors';
 
-// Mock the Transaction model to prevent actual database calls during testing
-jest.mock('../model/model');
+// Mock the models
+jest.mock('@models/index');
 
 describe('Transaction Service', () => {
   // Test user ID used across all test cases

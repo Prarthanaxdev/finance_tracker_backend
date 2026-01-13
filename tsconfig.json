@@ -5,6 +5,8 @@
     "lib": ["ES2020"],
     "outDir": "./dist",
     "rootDir": "./src",
+    "removeComments": true,
+    "sourceMap": false,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -19,7 +21,21 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "baseUrl": "./src",
+    "paths": {
+      "@models/*": ["models/*"],
+      "@repositories/*": ["repositories/*"],
+      "@services/*": ["services/*"],
+      "@utils/*": ["utils/*"],
+      "@config/*": ["config/*"],
+      "@middleware/*": ["middleware/*"],
+      "@auth/*": ["auth/*"],
+      "@category/*": ["category/*"],
+      "@transaction/*": ["transaction/*"],
+      "@dashboard/*": ["dashboard/*"],
+      "@validations/*": ["validations/*"]
+    }
   },
   "include": ["src/**/*", "node_modules/authMiddleware.ts"],
   "exclude": ["node_modules", "dist"]

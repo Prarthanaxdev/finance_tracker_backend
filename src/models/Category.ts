@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
-import { ICategory } from '../types';
+import { ICategory } from '@category/types';
 
 const CategorySchema = new Schema<ICategory>(
   {
@@ -7,7 +7,7 @@ const CategorySchema = new Schema<ICategory>(
       type: Schema.Types.ObjectId,
       ref: 'User',
       required: true,
-      index: true,
+      index: true, // Index for fast user-specific queries
     },
     name: {
       type: String,
@@ -35,6 +35,9 @@ const CategorySchema = new Schema<ICategory>(
 
 /* Prevent duplicate category names per user */
 CategorySchema.index({ userId: 1, name: 1 }, { unique: true });
+
+/* Additional index for filtering by userId and isDeleted status */
+CategorySchema.index({ userId: 1, isDeleted: 1 });
 
 const CategoryModel = mongoose.model<ICategory>('Category', CategorySchema);
 export default CategoryModel;

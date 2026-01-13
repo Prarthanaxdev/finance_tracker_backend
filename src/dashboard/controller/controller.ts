@@ -1,8 +1,10 @@
 import { Response, NextFunction } from 'express';
-import { AuthRequest } from '../../auth/types';
-import * as DashboardService from '../service/service';
-import { UnauthorizedError, ValidationError } from '../../utils/errors';
-import { logger } from '../../config/logger';
+import { AuthRequest } from '@auth/types';
+import { DashboardApplicationService } from '@services/application/DashboardApplicationService';
+import { UnauthorizedError, ValidationError } from '@utils/errors';
+import { logger } from '@config/logger';
+
+const dashboardAppService = new DashboardApplicationService();
 
 export const GetSummary = async (
   req: AuthRequest,
@@ -18,7 +20,7 @@ export const GetSummary = async (
       userId: req.user._id,
     });
 
-    const summary = await DashboardService.getMonthlySummary(req.user._id);
+    const summary = await dashboardAppService.getMonthlySummary(req.user._id);
 
     logger.info('Monthly summary retrieved successfully', {
       userId: req.user._id,
@@ -55,7 +57,7 @@ export const GetMonthlyTrends = async (
       year,
     });
 
-    const trends = await DashboardService.getMonthlyTrends(req.user._id, year);
+    const trends = await dashboardAppService.getMonthlyTrends(req.user._id, year);
 
     logger.info('Monthly trends retrieved successfully', {
       userId: req.user._id,
@@ -85,7 +87,7 @@ export const CategoryBreakdown = async (
       userId: req.user._id,
     });
 
-    const breakdown = await DashboardService.getCategoryBreakdown(req.user._id);
+    const breakdown = await dashboardAppService.getCategoryBreakdown(req.user._id);
 
     logger.info('Category breakdown retrieved successfully', {
       userId: req.user._id,
