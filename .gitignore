@@ -6,3 +6,5 @@ dist/
 .eslintrc.json
 .prettierrc.json
 logs/
+.vercel
+.env*.local

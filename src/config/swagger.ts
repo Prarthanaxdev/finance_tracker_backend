@@ -18,6 +18,10 @@ const options: swaggerJsdoc.Options = {
         url: `http://localhost:${config.PORT}`,
         description: 'Development server',
       },
+      {
+        url: 'https://your-backend-app.vercel.app',
+        description: 'Production server (update this URL after deployment)',
+      },
     ],
     components: {
       securitySchemes: {

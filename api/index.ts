@@ -10,6 +10,8 @@ import connectDB from '../src/config/db';
 import { config } from '../src/config/keys';
 import { errorHandler } from '../src/middleware/errorHandler';
 import morganMiddleware from '../src/middleware/morganMiddleware';
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from '../src/config/swagger';
 
 dotenv.config();
 
@@ -36,6 +38,10 @@ app.use(morganMiddleware);
 // Body parsing middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Swagger documentation route
+app.use('/api-docs', ...(swaggerUi.serve as any));
+app.get('/api-docs', swaggerUi.setup(swaggerSpec) as any);
 
 // Health check endpoint
 app.get('/health', (req: Request, res: Response) => {
