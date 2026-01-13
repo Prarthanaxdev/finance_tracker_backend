@@ -34,13 +34,13 @@
     "winston": "^3.19.0"
   },
   "_moduleAliases": {
-    "@services": "src/services",
-    "@auth": "src/auth",
-    "@category": "src/category",
-    "@transaction": "src/transaction",
-    "@dashboard": "src/dashboard",
-    "@config": "src/config",
-    "@middleware": "src/middleware"
+    "@services": "dist/services",
+    "@auth": "dist/auth",
+    "@category": "dist/category",
+    "@transaction": "dist/transaction",
+    "@dashboard": "dist/dashboard",
+    "@config": "dist/config",
+    "@middleware": "dist/middleware"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.3.1",
