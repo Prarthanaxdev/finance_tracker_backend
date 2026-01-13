@@ -5,12 +5,17 @@
  * It verifies proper validation, error handling, and CRUD operations for transaction categories.
  */
 
-import { createCategory, getUserCategories, updateCategory, deleteCategory } from '@services/index';
-import { Category as CategoryModel } from '@models/index';
-import { ValidationError, ConflictError, NotFoundError } from '@utils/errors';
+import {
+  createCategory,
+  getUserCategories,
+  updateCategory,
+  deleteCategory,
+} from '../../services/index';
+import { Category as CategoryModel } from '../../models/index';
+import { ValidationError, ConflictError, NotFoundError } from '../../utils/errors';
 
 // Mock the models
-jest.mock('@models/index');
+jest.mock('../../models/index');
 
 describe('Category Service', () => {
   // Test user ID used across all test cases

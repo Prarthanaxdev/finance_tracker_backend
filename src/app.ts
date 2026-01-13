@@ -7,7 +7,6 @@ import authRoutes from './auth/routes/routes';
 import categoryRoutes from './category/routes/routes';
 import transactionRoutes from './transaction/routes/routes';
 import dashboardRoutes from './dashboard/routes/routes';
-import config from './config/keys';
 import { errorHandler } from './middleware/errorHandler';
 import morganMiddleware from './middleware/morganMiddleware';
 import swaggerUi from 'swagger-ui-express';
@@ -18,16 +17,26 @@ dotenv.config();
 const app = express();
 
 app.use(helmet());
-app.use(cors({ origin: config.CORS_ORIGIN, credentials: true }));
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  }),
+);
 app.use(morganMiddleware);
 app.use(express.json());
 
-app.use('/api/auth', authRoutes);
+app.get('/', (_req, res) => {
+  res.status(200).send('Finance Tracker API is running!');
+});
+
+app.use('/api/', authRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/transactions', transactionRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 app.use(errorHandler);
 
 export default app;

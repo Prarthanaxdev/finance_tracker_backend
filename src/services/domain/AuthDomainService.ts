@@ -1,5 +1,5 @@
-import { UserRepository } from '@repositories/UserRepository';
-import { ValidationError, ConflictError, UnauthorizedError } from '@utils/errors';
+import { UserRepository } from '../../repositories/UserRepository';
+import { ValidationError, ConflictError, UnauthorizedError } from '../../utils/errors';
 
 export class AuthDomainService {
   private userRepository: UserRepository;

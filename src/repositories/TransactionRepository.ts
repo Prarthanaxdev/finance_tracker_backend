@@ -1,5 +1,5 @@
-import Transaction from '@models/Transaction';
-import { ITransaction } from '@transaction/types';
+import Transaction from '../models/Transaction';
+import { ITransaction } from '../transaction/types';
 
 /**
  * Transaction Repository

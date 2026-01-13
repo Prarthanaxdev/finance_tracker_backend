@@ -1,6 +1,6 @@
 import { Response, NextFunction } from 'express';
-import { AuthRequest } from '@auth/types';
-import { CategoryApplicationService } from '@services/application/CategoryApplicationService';
+import { AuthRequest } from '../../auth/types';
+import { CategoryApplicationService } from '../../services/application/CategoryApplicationService';
 
 const categoryAppService = new CategoryApplicationService();
 

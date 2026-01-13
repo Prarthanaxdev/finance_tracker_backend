@@ -1,4 +1,4 @@
-import { CategoryDomainService } from '@services/domain/CategoryDomainService';
+import { CategoryDomainService } from '../domain/CategoryDomainService';
 
 export class CategoryApplicationService {
   private categoryDomainService: CategoryDomainService;

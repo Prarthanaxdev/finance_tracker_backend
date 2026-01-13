@@ -1,6 +1,6 @@
-import { TransactionRepository } from '@repositories/TransactionRepository';
+import { TransactionRepository } from '../../repositories/TransactionRepository';
 import mongoose from 'mongoose';
-import { ValidationError } from '@utils/errors';
+import { ValidationError } from '../../utils/errors';
 
 /**
  * Analytics Domain Service

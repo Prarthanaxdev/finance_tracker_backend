@@ -1,5 +1,5 @@
-import { TransactionDomainService } from '@services/domain/TransactionDomainService';
-import { CategoryDomainService } from '@services/domain/CategoryDomainService';
+import { TransactionDomainService } from '../domain/TransactionDomainService';
+import { CategoryDomainService } from '../domain/CategoryDomainService';
 
 export class TransactionApplicationService {
   private transactionDomainService: TransactionDomainService;

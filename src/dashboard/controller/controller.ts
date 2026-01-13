@@ -1,8 +1,8 @@
 import { Response, NextFunction } from 'express';
-import { AuthRequest } from '@auth/types';
-import { DashboardApplicationService } from '@services/application/DashboardApplicationService';
-import { UnauthorizedError, ValidationError } from '@utils/errors';
-import { logger } from '@config/logger';
+import { AuthRequest } from '../../auth/types';
+import { DashboardApplicationService } from '../../services/application/DashboardApplicationService';
+import { UnauthorizedError, ValidationError } from '../../utils/errors';
+import { logger } from '../../config/logger';
 
 const dashboardAppService = new DashboardApplicationService();
 

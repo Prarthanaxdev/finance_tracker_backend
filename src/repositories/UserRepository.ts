@@ -1,5 +1,5 @@
-import User from '@models/Auth';
-import { IUser } from '@auth/types';
+import User from '../models/Auth';
+import { IUser } from '../auth/types';
 
 /**
  * User Repository

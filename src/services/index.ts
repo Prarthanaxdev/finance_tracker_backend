@@ -1,7 +1,7 @@
-import { AuthApplicationService } from '@services/application/AuthApplicationService';
-import { CategoryApplicationService } from '@services/application/CategoryApplicationService';
-import { TransactionApplicationService } from '@services/application/TransactionApplicationService';
-import { DashboardApplicationService } from '@services/application/DashboardApplicationService';
+import { AuthApplicationService } from './application/AuthApplicationService';
+import { CategoryApplicationService } from './application/CategoryApplicationService';
+import { TransactionApplicationService } from './application/TransactionApplicationService';
+import { DashboardApplicationService } from './application/DashboardApplicationService';
 
 // Auth service wrappers
 const authService = new AuthApplicationService();

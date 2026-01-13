@@ -1,8 +1,8 @@
 import express, { Router } from 'express';
-import { authMiddleware } from '@middleware/authMiddleware';
+import { authMiddleware } from '../../middleware/authMiddleware';
 import * as CategoryController from '../controller/controller';
-import { validateRequest } from '@validations/validator';
-import { CreateCategorySchema } from '@validations/schema';
+import { validateRequest } from '../../validations/validator';
+import { CreateCategorySchema } from '../../validations/schema';
 
 const router: Router = express.Router();
 

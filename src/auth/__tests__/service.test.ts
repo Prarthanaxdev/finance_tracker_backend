@@ -5,13 +5,13 @@
  * It verifies proper validation, error handling, and successful authentication flows.
  */
 
-import { registerUser, loginUser } from '@services/index';
-import { User } from '@models/index';
+import { registerUser, loginUser } from '../../services/index';
+import { User } from '../../models/index';
 import jwt from 'jsonwebtoken';
-import { ValidationError, ConflictError, UnauthorizedError } from '@utils/errors';
+import { ValidationError, ConflictError, UnauthorizedError } from '../../utils/errors';
 
 // Mock the models
-jest.mock('@models/index');
+jest.mock('../../models/index');
 
 // Mock jsonwebtoken to control token generation in tests
 jest.mock('jsonwebtoken');

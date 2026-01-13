@@ -1,6 +1,6 @@
 import { Response, NextFunction } from 'express';
-import { AuthRequest } from '@auth/types';
-import { TransactionApplicationService } from '@services/application/TransactionApplicationService';
+import { AuthRequest } from '../../auth/types';
+import { TransactionApplicationService } from '../../services/application/TransactionApplicationService';
 
 const transactionAppService = new TransactionApplicationService();
 

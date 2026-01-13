@@ -1,5 +1,5 @@
-import Category from '@models/Category';
-import { ICategory } from '@category/types';
+import Category from '../models/Category';
+import { ICategory } from '../category/types';
 
 /**
  * Category Repository

@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import { JWTPayload } from '@auth/types';
-import { AuthDomainService } from '@services/domain/AuthDomainService';
+import { JWTPayload } from '../../auth/types';
+import { AuthDomainService } from '../domain/AuthDomainService';
 
 export class AuthApplicationService {
   private authDomainService: AuthDomainService;

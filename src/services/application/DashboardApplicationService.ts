@@ -1,4 +1,4 @@
-import { AnalyticsDomainService } from '@services/domain/AnalyticsDomainService';
+import { AnalyticsDomainService } from '../domain/AnalyticsDomainService';
 
 export class DashboardApplicationService {
   private analyticsDomainService: AnalyticsDomainService;

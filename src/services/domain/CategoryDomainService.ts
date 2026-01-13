@@ -1,5 +1,5 @@
-import { CategoryRepository } from '@repositories/CategoryRepository';
-import { ValidationError, ConflictError, NotFoundError } from '@utils/errors';
+import { CategoryRepository } from '../../repositories/CategoryRepository';
+import { ValidationError, ConflictError, NotFoundError } from '../../utils/errors';
 
 /**
  * Category Domain Service

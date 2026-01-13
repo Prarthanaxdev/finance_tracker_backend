@@ -1,5 +1,5 @@
-import { TransactionRepository } from '@repositories/TransactionRepository';
-import { ValidationError, NotFoundError } from '@utils/errors';
+import { TransactionRepository } from '../../repositories/TransactionRepository';
+import { ValidationError, NotFoundError } from '../../utils/errors';
 
 /**
  * Transaction Domain Service

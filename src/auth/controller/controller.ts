@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { RegisterBody, LoginBody, ApiResponse } from '@auth/types';
-import { AuthApplicationService } from '@services/application/AuthApplicationService';
+import { RegisterBody, LoginBody, ApiResponse } from '../types';
+import { AuthApplicationService } from '../../services/application/AuthApplicationService';
 
 const authAppService = new AuthApplicationService();
 
