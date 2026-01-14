@@ -18,7 +18,7 @@ module.exports = {
       },
     ],
   },
-  moduleNameMapping: {
+  moduleNameMapper: {
     '^@models/(.*)$': '<rootDir>/src/models/$1',
     '^@repositories/(.*)$': '<rootDir>/src/repositories/$1',
     '^@services/(.*)$': '<rootDir>/src/services/$1',

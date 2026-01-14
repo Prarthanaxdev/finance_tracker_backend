@@ -19,8 +19,8 @@ const options: swaggerJsdoc.Options = {
         description: 'Development server',
       },
       {
-        url: 'https://your-backend-app.vercel.app',
-        description: 'Production server (update this URL after deployment)',
+        url: 'https://finance-tracker-backend-sage.vercel.app/',
+        description: 'Production server',
       },
     ],
     components: {

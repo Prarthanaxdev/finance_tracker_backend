@@ -27,15 +27,24 @@ This is the backend API for the Personal Finance Tracker application.
 
 ```
 src/
-├── auth/              # Authentication routes, controllers, models, and services
-├── category/          # Category management
-├── dashboard/         # Dashboard data and analytics
-├── transaction/       # Transaction CRUD operations
-├── config/            # Configuration files (database, logger, Swagger, keys)
-├── middleware/        # Express middleware (auth, error handling, logging)
-├── utils/             # Utility functions and custom error classes
-├── validations/       # Input validation schemas
-└── server.ts          # Main application entry point
+  auth/           # Authentication
+  category/       # Category management
+  dashboard/      # Dashboard analytics
+  transaction/    # Transaction
+  config/         # Configuration (db, keys, logger, swagger)
+  middleware/     # Express middleware
+  models/         # Mongoose models (Auth, Category, Transaction, index)
+  repositories/   # Data access layer (Category, Transaction, User, index)
+  services/       # Business logic (application, domain, index)
+  utils/          # Utility functions and custom errors
+  validations/    # Input validation schemas and logic
+  server.ts       # Main application entry point
+  setupTests.ts   # Test setup file
+
+Flow:
+Controllers call Application Services.
+Application Services call Domain Services.
+Domain Services call the Repository
 ```
 
 ## Technologies Used

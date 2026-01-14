@@ -57,6 +57,11 @@ export class TransactionDomainService {
       this.validateAmount(updateData.amount);
     }
 
+    // Validation: type and categoryId must be updated together (both or neither)
+    if ((updateData.type && !updateData.categoryId) || (!updateData.type && updateData.categoryId)) {
+      throw new ValidationError('Both type and categoryId must be provided together');
+    }
+
     const transaction = await this.transactionRepository.update(transactionId, userId, updateData);
 
     if (!transaction) {
